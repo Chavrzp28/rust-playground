@@ -21,8 +21,8 @@ import { performCompileToMirOnly } from './reducers/output/mir';
 import { performCompileToWasmOnly } from './reducers/output/wasm';
 import { navigateToHelp, navigateToIndex } from './reducers/page';
 import {
+  activeFileHasMainFunctionSelector,
   getCrateType,
-  hasMainFunction,
   linearCodeSelector,
   runAsTest,
   wasmLikelyToWork,
@@ -213,7 +213,8 @@ export function preserveContentAndChangeFileView(fv: FileView): ThunkAction {
       dispatch(editSingleCode(code));
     } else {
       const content = state.code;
-      const name = hasMainFunction(content) ? 'src/main.rs' : 'src/lib.rs';
+      const hasMain = activeFileHasMainFunctionSelector(state);
+      const name = hasMain ? 'src/main.rs' : 'src/lib.rs';
       dispatch(files.initializeWith({ name, content }));
     }
   };

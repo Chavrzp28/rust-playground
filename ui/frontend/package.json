@@ -20,7 +20,9 @@
     "react-redux": "^9.0.2",
     "react-shadow": "^20.0.0",
     "route-parser": "^0.0.5",
+    "tree-sitter-rust": "^0.24.0",
     "uuid": "^14.0.0",
+    "web-tree-sitter": "^0.26.11",
     "zod": "^4.0.14"
   },
   "devDependencies": {
